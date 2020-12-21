@@ -1,0 +1,22 @@
+#imgStyle{
+    width:300px;
+    height:150px;
+}
+*{
+    background-color: purple;
+}
+#logoutBtn{
+    color: chocolate;
+    border-style: none;
+}
+#AppointmentRequestBtn{
+    color: chocolate;
+    border-style: none;
+
+}
+#ProfileEditBtn{
+    font-size: 15px;
+    text-align: center;
+    border-style: none;
+
+}
