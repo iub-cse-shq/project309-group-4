@@ -1,0 +1,24 @@
+{
+  "name": "project309-group-4",
+  "version": "1.0.0",
+  "description": "Project details and documentation goes here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iub-cse-shq/project309-group-4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iub-cse-shq/project309-group-4/issues"
+  },
+  "homepage": "https://github.com/iub-cse-shq/project309-group-4#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.9"
+  }
+}
