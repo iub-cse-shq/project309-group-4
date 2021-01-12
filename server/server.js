@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-var dbURL = 'mongodb://localhost:27017/din' //change this if you are using Atlas
+var dbURL = 'mongodb://localhost:27017/dinDatabase' //change this if you are using Atlas
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('error', function (err) {
  console.log(err)
