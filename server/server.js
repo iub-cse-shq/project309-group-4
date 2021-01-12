@@ -29,7 +29,7 @@ app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
 
 })
 
-app.get('/client/PatientsPageFromDoctorsView', function(request, response){
+app.get('/PatientsPageFromDoctorsView', function(request, response){
 	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
 
 })
@@ -42,7 +42,10 @@ app.get('client/sign up',function(request, response){
 
 })
 
-
+server.listen(process.env.PORT || 3000, 
+	process.env.IP || 'localhost', function(){
+					  console.log('Server running');
+	})
 
 
 
