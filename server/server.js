@@ -34,9 +34,6 @@ app.get('/profiles/all', function(request, response){
       return response.status(200).json(JSON.stringify(data));
       })
 
-    // response.render('allArticles.ejs',{
-    //     article: articles
-    // })
 })
 
 app.post('/profile/new', function(request, response){
@@ -51,6 +48,25 @@ app.post('/profile/new', function(request, response){
           message: 'Profile created successfully'
         })
       })
+
+      //for load names and other things on page
+app.get('/login/:id', function (request, response) {
+
+  Profile.findById(request.params.id, function (err, data) {
+      response.render('DoctorsProfileFromDoctorsView.html', {
+          Profile: data
+      })
+  })
+})
+
+app.get('/login/:id', function (request, response) {
+
+  Profile.findById(request.params.id, function (err, data) {
+      response.render('PatientProfileFromPatientsView.html', {
+          Profile: data
+      })
+  })
+})
 
 
 

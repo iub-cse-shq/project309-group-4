@@ -1,6 +1,29 @@
+///////
+function login(successCallback, failureCallback) {
+    return  $.ajax(
+        {
+            url: '/login/:id',
+            type:'GET',
+            success: successCallback,
+            error: failureCallback
+        }
+    ) 
+}
+$('#submit').click(function(){
+    let successCallback = (response) => {
+        console.log(response)
+}
+let failureCallback = (response) => {
+    console.log(response)
+    alert('something went wrong')
+}
+login(successCallback, failureCallback)
+})
+
+///////////
 function signup(data, successCallback, failureCallback) {
     return $.ajax({
-        url: 'profile/new',
+        url: '/profile/new',
         type: 'POST',
         data: data,
         success: successCallback,
@@ -37,7 +60,7 @@ $('#subBtn').click(function(){
 //for edit button in page
 function editProfile(data, successCallback, failureCallback) {
     return $.ajax({
-        url: 'profiles/all',
+        url: '/login/:id',
         type: 'POST',
         data: data,
         success: successCallback,
@@ -68,21 +91,3 @@ $('#editProfileBtn').click(function(){
     editProfile(newUser, successCallback, failureCallback)
 })
 
-//for load names and other things on page
-app.get('/login/:id', function (request, response) {
-
-    Profile.findById(request.params.id, function (err, data) {
-        response.render('DoctorsProfileFromDoctorsView.html', {
-            Profile: data
-        })
-    })
-})
-
-app.get('/login/:id', function (request, response) {
-
-    Profile.findById(request.params.id, function (err, data) {
-        response.render('PatientProfileFromPatientsView.html', {
-            Profile: data
-        })
-    })
-})
