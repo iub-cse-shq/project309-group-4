@@ -62,13 +62,13 @@ $('#editProfileBtn').click(function(){
     let successCallback = (response) => {
         console.log(response)
     }
-    signup(newUser, successCallback, failureCallback)
+    editProfile(newUser, successCallback, failureCallback)
 })
 
 //for load names and other things on page
 app.get('/log in/:id', function (request, response) {
 
-    Article.findById(request.params.id, function (err, data) {
+    Profile.findById(request.params.id, function (err, data) {
         response.render('DoctorsProfileFromDoctorsView.html', {
             profile: data
         })
@@ -77,7 +77,7 @@ app.get('/log in/:id', function (request, response) {
 
 app.get('/log in/:id', function (request, response) {
 
-    Article.findById(request.params.id, function (err, data) {
+    Profile.findById(request.params.id, function (err, data) {
         response.render('PatientProfileFromPatientsView.html', {
             profile: data
         })
