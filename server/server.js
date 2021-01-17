@@ -22,42 +22,62 @@ app.get('/',function(request, response){
 	response.sendFile(__dirname+'/client/login.html')
 
 })
-app.get('/doctors/all', function(request, response){
-	Profile.find({}, function (err, data) {
-		console.log(data)
-		response.render('allDoctors.ejs', {
-		  doctors: data
-		})
-	  }) 
+
+app.get('/profiles/all', function(request, response){
+    Profile.find({}, function (err, data) {
+      if(err){
+        return response.status(400).json({
+          error: 'data is missing'
+        })
+      }
+        console.log(data);
+      return response.status(200).json(JSON.stringify(data));
+      })
+
+    // response.render('allArticles.ejs',{
+    //     article: articles
+    // })
 })
 
-// app.get('/client/DoctorsProfileFromDoctorsView', function(request, response){
-// 	response.sendFile(__dirname+'/client/DoctorsProfileFromDoctorsView.html')
-// })
-// app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
-// 	response.sendFile(__dirname+'/client/DoctorsProfileFromPatientsView.html')
+app.post('/profile/new', function(request, response){
+    var addNewProfile = new Profile(request.body)
 
-// })
+    addNewProfile.save(function (err, data) {
+        if (err)
+          return response.status(400).json({
+            error: 'data is missing'
+          })
+        return response.status(200).json({
+          message: 'Profile created successfully'
+        })
+      })
 
-// app.get('/PatientsPageFromDoctorsView', function(request, response){
-// 	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
 
-// })
 
-// app.get('client/PatientProfileFromPatientsView', function(request, response){
-// 	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
-// })
-// app.get('client/sign up',function(request, response){
-// 	response.sendFile(__dirname+'/client/sign up.html')
+app.get('/client/DoctorsProfileFromDoctorsView', function(request, response){
+	response.sendFile(__dirname+'/client/DoctorsProfileFromDoctorsView.html')
+})
+app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
+	response.sendFile(__dirname+'/client/DoctorsProfileFromPatientsView.html')
 
-// })
+})
+
+app.get('/PatientsPageFromDoctorsView', function(request, response){
+	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
+
+})
+
+app.get('client/PatientProfileFromPatientsView', function(request, response){
+	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
+})
+app.get('client/signup',function(request, response){
+	response.sendFile(__dirname+'/client/signup.html')
+
+})
 
 server.listen(process.env.PORT || 3000, 
 	process.env.IP || 'localhost', function(){
 					  console.log('Server running');
 	})
-
-
-
-
+	
 module.exports = {app, server, mongoose}

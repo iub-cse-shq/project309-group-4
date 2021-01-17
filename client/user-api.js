@@ -1,6 +1,6 @@
 function signup(data, successCallback, failureCallback) {
     return $.ajax({
-        url: 'mongodb://localhost:27017/dinDatabase',
+        url: 'profile/new',
         type: 'POST',
         data: data,
         success: successCallback,
@@ -17,7 +17,10 @@ $('#subBtn').click(function(){
     let newUser = {
         name: name,
         email: email,
+        userType: email,
         password: password,
+        gender: gender,
+        dateOfBirth: dateOfBirth,
         cpassword: cpassword
 
     }
@@ -34,7 +37,7 @@ $('#subBtn').click(function(){
 //for edit button in page
 function editProfile(data, successCallback, failureCallback) {
     return $.ajax({
-        url: 'mongodb://localhost:27017/dinDatabase',
+        url: 'profiles/all',
         type: 'POST',
         data: data,
         success: successCallback,
@@ -66,20 +69,20 @@ $('#editProfileBtn').click(function(){
 })
 
 //for load names and other things on page
-app.get('/log in/:id', function (request, response) {
+app.get('/login/:id', function (request, response) {
 
     Profile.findById(request.params.id, function (err, data) {
         response.render('DoctorsProfileFromDoctorsView.html', {
-            profile: data
+            Profile: data
         })
     })
 })
 
-app.get('/log in/:id', function (request, response) {
+app.get('/login/:id', function (request, response) {
 
     Profile.findById(request.params.id, function (err, data) {
         response.render('PatientProfileFromPatientsView.html', {
-            profile: data
+            Profile: data
         })
     })
 })
