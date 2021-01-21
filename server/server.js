@@ -3,7 +3,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
 var server = http.Server(app)
-var Profile = require('./doctorsInNeed.model')
+var Profile = require('../profile.model')
 const path = require('path');
 
 app.use(bodyParser.json())
@@ -12,7 +12,7 @@ app.use('/static', express.static(path.join(__dirname , '/static')))
 
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-var dbURL = 'mongodb://localhost:27017/dinDatabase'
+var dbURL = 'mongodb://localhost:27017/abcDatabase'
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('error', function (err) {
  console.log(err)
@@ -48,6 +48,7 @@ app.post('/profile/new', function(request, response){
           message: 'Profile created successfully'
         })
       })
+})
 
       //for load names and other things on page
 app.get('/login/:id', function (request, response) {
@@ -96,4 +97,4 @@ server.listen(process.env.PORT || 3000,
 					  console.log('Server running');
 	})
 	
-module.exports = {app, server, mongoose}
+ module.exports = {app, server, mongoose}
