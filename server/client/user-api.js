@@ -1,27 +1,5 @@
-///////
-function login(successCallback, failureCallback) {
-    return  $.ajax(
-        {
-            url: '/login/:id',
-            type:'GET',
-            success: successCallback,
-            error: failureCallback
-        }
-    ) 
-}
-$('#submit').click(function(){
-    let successCallback = (response) => {
-        console.log(response)
-}
-let failureCallback = (response) => {
-    console.log(response)
-    alert('something went wrong')
-}
-login(successCallback, failureCallback)
-})
-
-///////////
 function signup(data, successCallback, failureCallback) {
+    console.log(data)
     return $.ajax({
         url: '/profile/new',
         type: 'POST',
@@ -31,11 +9,12 @@ function signup(data, successCallback, failureCallback) {
     })
 }
 
-$('#subBtn').click(function(){
+$('#createAccountBtn').click(function(){
     let name = $('#name').val()
     let email = $('#email').val()
     let password = $('#password').val()
     let cpassword = $('#cpassword').val()
+    console.log("submited")
 
     let newUser = {
         name: name,
@@ -55,6 +34,28 @@ $('#subBtn').click(function(){
         console.log(response)
     }
     signup(newUser, successCallback, failureCallback)
+})
+
+//forlogin
+function login(successCallback, failureCallback) {
+    return  $.ajax(
+        {
+            url: '/login/:id',
+            type:'GET',
+            success: successCallback,
+            error: failureCallback
+        }
+    ) 
+}
+$('#SignInBtn').click(function(){
+    let successCallback = (response) => {
+        console.log(response)
+}
+let failureCallback = (response) => {
+    console.log(response)
+    alert('something went wrong')
+}
+login(successCallback, failureCallback)
 })
 
 //for edit button in page
@@ -90,4 +91,3 @@ $('#editProfileBtn').click(function(){
     }
     editProfile(newUser, successCallback, failureCallback)
 })
-
