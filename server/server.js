@@ -23,6 +23,12 @@ app.get('/',function(request, response){
 
 })
 
+
+app.get('/client/signup',function(request, response){
+	response.sendFile(__dirname+'/client/signup.html')
+
+})
+
 app.get('/profiles/all', function(request, response){
     Profile.find({}, function (err, data) {
       if(err){
@@ -71,26 +77,23 @@ app.get('/login/:id', function (request, response) {
 
 
 
-app.get('/client/DoctorsProfileFromDoctorsView', function(request, response){
-	response.sendFile(__dirname+'/client/DoctorsProfileFromDoctorsView.html')
-})
-app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
-	response.sendFile(__dirname+'/client/DoctorsProfileFromPatientsView.html')
+// app.get('/client/DoctorsProfileFromDoctorsView', function(request, response){
+// 	response.sendFile(__dirname+'/client/DoctorsProfileFromDoctorsView.html')
+// })
+// app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
+// 	response.sendFile(__dirname+'/client/DoctorsProfileFromPatientsView.html')
 
-})
+// })
 
-app.get('/PatientsPageFromDoctorsView', function(request, response){
-	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
+// app.get('client/PatientsPageFromDoctorsView', function(request, response){
+// 	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
 
-})
+// })
 
-app.get('client/PatientProfileFromPatientsView', function(request, response){
-	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
-})
-app.get('client/signup',function(request, response){
-	response.sendFile(__dirname+'/client/signup.html')
+// app.get('client/PatientProfileFromPatientsView', function(request, response){
+// 	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
+// })
 
-})
 
 server.listen(process.env.PORT || 3000, 
 	process.env.IP || 'localhost', function(){
