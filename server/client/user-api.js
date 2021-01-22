@@ -92,7 +92,7 @@ $('#editProfileBtn').click(function(){
     }
     editProfile(newUser, successCallback, failureCallback)
 })
-///for searching doctor
+//for searching doctor
 function Serach(successCallback, failureCallback) {
     return  $.ajax(
         {
@@ -114,7 +114,7 @@ let failureCallback = (response) => {
 Serach(successCallback, failureCallback)
 })
 
-//appointment request
+//for sending appointment request
 function sendRequest(data, successCallback, failureCallback) {
     console.log(data)
     return $.ajax({

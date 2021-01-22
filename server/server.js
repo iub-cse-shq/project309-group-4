@@ -65,7 +65,7 @@ app.post('/profile/new', function(request, response){
       })
     })
   })
-  //for sending request
+  //for sending appointment request
   app.post('/request/new', function(request, response){
     console.log("req.body", request.body)
     var addNewRequest = new Request(request.body)
@@ -85,7 +85,7 @@ app.post('/profile/new', function(request, response){
       })
     })
 
-      //for load names and other things on page
+      //for login
 app.get('/login/:id', function (request, response) {
 
   Profile.findById(request.params.id, function (err, data) {
@@ -104,6 +104,7 @@ app.get('/login/:id', function (request, response) {
   })
 })
 
+//for searching doctor
 app.get('/profile/:id', function (request, response) {
 
   Profile.findById(request.params.id, function (err, data) {
