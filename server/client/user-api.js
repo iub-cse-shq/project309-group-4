@@ -1,3 +1,4 @@
+//for creating new account
 function signup(data, successCallback, failureCallback) {
     console.log(data)
     return $.ajax({
@@ -58,7 +59,7 @@ let failureCallback = (response) => {
 login(successCallback, failureCallback)
 })
 
-//for edit button in page
+//for editing profile
 function editProfile(data, successCallback, failureCallback) {
     return $.ajax({
         url: '/login/:id',
@@ -90,4 +91,57 @@ $('#editProfileBtn').click(function(){
         console.log(response)
     }
     editProfile(newUser, successCallback, failureCallback)
+})
+///for searching doctor
+function Serach(successCallback, failureCallback) {
+    return  $.ajax(
+        {
+            url: '/profile/:id',
+            type:'GET',
+            success: successCallback,
+            error: failureCallback
+        }
+    ) 
+}
+$('.searchBtn').click(function(){
+    let successCallback = (response) => {
+        console.log(response)
+}
+let failureCallback = (response) => {
+    console.log(response)
+    alert('something went wrong')
+}
+Serach(successCallback, failureCallback)
+})
+
+//appointment request
+function sendRequest(data, successCallback, failureCallback) {
+    console.log(data)
+    return $.ajax({
+        url: '/request/new',
+        type: 'POST',
+        data: data,
+        success: successCallback,
+        error: failureCallback
+    })
+}
+
+$('#AppointmentRequestBtn').click(function(){
+    let name = $('#name').val()
+    let email = $('#email').val()
+    console.log("submited")
+
+    let newUser = {
+        name: name,
+        email: email
+
+    }
+    let failureCallback = (response) => {
+        console.log(response)
+        alert('something went wrong')
+    }
+    let successCallback = (response) => {
+        console.log(response)
+    }
+    sendRequest(newUser, successCallback, failureCallback)
 })

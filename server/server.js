@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var app = express()
 var server = http.Server(app)
 var Profile = require('../profile.model')
+var Request = require('../request.model')
 const path = require('path');
 
 app.use(bodyParser.json())
@@ -64,6 +65,25 @@ app.post('/profile/new', function(request, response){
       })
     })
   })
+  //for sending request
+  app.post('/request/new', function(request, response){
+    console.log("req.body", request.body)
+    var addNewRequest = new Request(request.body)
+  
+    addNewRequest.save(function (err, data) {
+        if (err)
+        {
+          console.log("From ", err)
+          return response.status(400).json({
+            error: 'data is missing'
+          })
+        }
+         
+        return response.status(200).json({
+          message: 'Profile created successfully'
+        })
+      })
+    })
 
       //for load names and other things on page
 app.get('/login/:id', function (request, response) {
@@ -79,6 +99,15 @@ app.get('/login/:id', function (request, response) {
 
   Profile.findById(request.params.id, function (err, data) {
       response.render('PatientProfileFromPatientsView.html', {
+          Profile: data
+      })
+  })
+})
+
+app.get('/profile/:id', function (request, response) {
+
+  Profile.findById(request.params.id, function (err, data) {
+      response.render('DoctorsProfileFromPatientsView.html', {
           Profile: data
       })
   })
