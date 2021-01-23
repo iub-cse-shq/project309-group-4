@@ -105,14 +105,14 @@ app.get('/login/:id', function (request, response) {
 })
 
 //for searching doctor
-app.get('/profile/:id', function (request, response) {
+// app.get('/profile/:id', function (request, response) {
 
-  Profile.findById(request.params.id, function (err, data) {
-      response.render('DoctorsProfileFromPatientsView.html', {
-          Profile: data
-      })
-  })
-})
+//   Profile.findById(request.params.id, function (err, data) {
+//       response.render('DoctorsProfileFromPatientsView.html', {
+//           Profile: data
+//       })
+//   })
+// })
 
 
 
@@ -124,12 +124,12 @@ app.get('/client/DoctorsProfileFromPatientsView',function(request, response){
 
 })
 
-app.get('client/PatientsPageFromDoctorsView', function(request, response){
+app.get('/client/PatientsPageFromDoctorsView', function(request, response){
 	response.sendFile(__dirname+'/client/PatientsPageFromDoctorsView.html')
 
 })
 
-app.get('client/PatientProfileFromPatientsView', function(request, response){
+app.get('/client/PatientProfileFromPatientsView', function(request, response){
 	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
 })
 

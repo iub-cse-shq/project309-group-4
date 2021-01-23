@@ -93,26 +93,26 @@ $('#editProfileBtn').click(function(){
     editProfile(newUser, successCallback, failureCallback)
 })
 //for searching doctor
-function Serach(successCallback, failureCallback) {
-    return  $.ajax(
-        {
-            url: '/profile/:id',
-            type:'GET',
-            success: successCallback,
-            error: failureCallback
-        }
-    ) 
-}
-$('.searchBtn').click(function(){
-    let successCallback = (response) => {
-        console.log(response)
-}
-let failureCallback = (response) => {
-    console.log(response)
-    alert('something went wrong')
-}
-Serach(successCallback, failureCallback)
-})
+// function Serach(successCallback, failureCallback) {
+//     return  $.ajax(
+//         {
+//             url: '/profile/:id',
+//             type:'GET',
+//             success: successCallback,
+//             error: failureCallback
+//         }
+//     ) 
+// }
+// $('.searchBtn').click(function(){
+//     let successCallback = (response) => {
+//         console.log(response)
+// }
+// let failureCallback = (response) => {
+//     console.log(response)
+//     alert('something went wrong')
+// }
+// Serach(successCallback, failureCallback)
+// })
 
 //for sending appointment request
 function sendRequest(data, successCallback, failureCallback) {
