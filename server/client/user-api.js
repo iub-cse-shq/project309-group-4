@@ -145,3 +145,4 @@ $('#AppointmentRequestBtn').click(function(){
     }
     sendRequest(newUser, successCallback, failureCallback)
 })
+module.exports = { sendRequest, Serach, editProfile, signup  }
