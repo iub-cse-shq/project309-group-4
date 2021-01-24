@@ -1,0 +1,11 @@
+<%-  include('partials/header.ejs') %>
+        <h1>All profile view</h1>
+        <% console.log(profile) %>
+        <ul>
+            <% profile.forEach((profile)=>{ %>
+                <li><%= profile.title %></li>
+            <% }) %>
+        </ul>
+
+
+<%-  include('partials/footer.ejs') %>

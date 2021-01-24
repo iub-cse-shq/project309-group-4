@@ -1,0 +1,11 @@
+<%-  include('partials/header.ejs') %>
+        <h1>report view</h1>
+        <% console.log(report) %>
+        <ul>
+            <% report.forEach((report)=>{ %>
+                <li><%= report.title %></li>
+            <% }) %>
+        </ul>
+
+
+<%-  include('partials/footer.ejs') %>

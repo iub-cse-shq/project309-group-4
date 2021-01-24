@@ -1,0 +1,11 @@
+<%-  include('partials/header.ejs') %>
+        <h1>appointment view</h1>
+        <% console.log(appointment) %>
+        <ul>
+            <% appointment.forEach((appointment)=>{ %>
+                <li><%= appointment.title %></li>
+            <% }) %>
+        </ul>
+
+
+<%-  include('partials/footer.ejs') %>

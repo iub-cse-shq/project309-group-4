@@ -14,7 +14,7 @@ app.use('/static', express.static(path.join(__dirname , '/static')))
 
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-var dbURL = 'mongodb://localhost:27017/abcDatabase'
+var dbURL = 'mongodb://localhost:27017/dinDatabase'
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('error', function (err) {
  console.log(err)
@@ -22,6 +22,11 @@ mongoose.connection.on('error', function (err) {
 
 app.get('/',function(request, response){
 	response.sendFile(__dirname+'/client/login.html')
+
+})
+
+app.get('/',function(request, response){
+	response.sendFile(__dirname+'/client/bg.jpg')
 
 })
 
@@ -132,6 +137,10 @@ app.get('/client/PatientsPageFromDoctorsView', function(request, response){
 app.get('/client/PatientProfileFromPatientsView', function(request, response){
 	response.sendFile(__dirname+'/client/PatientProfileFromPatientsView.html')
 })
+
+// app.get('/client/bg', function(request, response){
+// 	response.sendFile(__dirname+'/client/bg.jpg')
+// })
 
 
 server.listen(process.env.PORT || 3000, 
